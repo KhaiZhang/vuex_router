@@ -7,6 +7,7 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import ToDoList from './components/ToDoList.vue'
+import './assets/myCss.css'
 
 export default {
   name: 'app',

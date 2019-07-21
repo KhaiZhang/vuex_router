@@ -1,0 +1,52 @@
+.page_container {
+    align-self: center;
+    box-sizing: border-box; 
+    margin-left: 25%;
+    width: 700px;
+    border-radius: 20px;
+    border:20px solid #ccc;
+}
+
+
+
+.container{
+    margin:0 auto;
+    width: 600px;
+  }
+
+ .tips {
+    font-style:oblique;
+    font-weight:500;
+ }
+
+ #inputNum {
+     width: 400px;
+     height: 25px;
+ }
+
+  .addbtn {
+    background-color:	#FF8888 ;
+    width: 70px;
+    height: 36px;
+    margin-left: 10px;
+    border-radius: 10px;
+    outline : none;
+    color: white;
+ }
+
+ .list li{
+    text-align: left;
+    margin-left: 150px;
+    position: relative;
+    left: -20%;
+    padding: 10px 0;
+  }
+
+.page_bottom {
+    margin-left: 200px;
+}
+
+.select_item{
+    margin-left: 50px;
+    color:palevioletred;
+}

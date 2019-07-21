@@ -1,17 +1,23 @@
 <template>
   <div class="page_container">
   <div class="container">
+    <div>
     <h2>Jquery To Do List</h2>
-    <p>Simple Todo List with adding and filter by diff status</p>
+    <p class="tips">Simple Todo List with adding and filter by diff status</p>
     <input type="text" id="inputNum" name="inputNum">
-    <button>add</button>
-    <ol>
-      <li>
+    <button class="addbtn">Add</button>
+    <ol class ="list" >
+      <li v-for="(item,index) in 4" v-bind:key="index" >
         <input type="checkbox" >
-        <span>123</span>
+        <span>{{index}}</span>
       </li>
     </ol>
-    <p><span>all&nbsp;</span><span>active&nbsp;</span><span>complete</span></p>
+    <div class="page_bottom">
+        <span class="select_item">ALL&nbsp;</span>
+        <span class="select_item">Active&nbsp;</span>
+        <span class="select_item">Complete</span>
+    </div>
+    </div>
   </div>
 </div>
 </template>
