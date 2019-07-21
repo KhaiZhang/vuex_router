@@ -7,7 +7,7 @@
     <input type="text" id="inputNum" name="inputNum">
     <button class="addbtn">Add</button>
     <ol class ="list" >
-      <li v-for="(item,index) in 4" v-bind:key="index" >
+      <li v-for="(item,index) in 4" v-bind:key="index" :class="{rackA:item%2==0}">
         <input type="checkbox" >
         <span>{{index}}</span>
       </li>
