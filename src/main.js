@@ -20,6 +20,11 @@ const store = new Vuex.Store({
   mutations: {
     addItem(state,inputItem){
       state.itemList.push(inputItem);
+    },
+    changeStatus(state,item){
+      let result = state.itemList.find(element => element === item);
+      result.isFinish = !result.isFinish;
+      result.isEditable = !result.isEditable
     }
   }
 })

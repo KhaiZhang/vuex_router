@@ -20,31 +20,12 @@ export default {
       return {
           currentContent:null,
           selectTpye:'ALL',
-          itemList:[
-              {
-                  isFinish:false,
-                  content:'1111',
-                  isEdit:false,
-                  isEditable:true
-              },
-               {
-                  isFinish:false,
-                  content:'2222',
-                  isEdit:false,
-                  isEditable:true
-              },
-               {
-                  isFinish:false,
-                  content:'11333311',
-                  isEdit:false,
-                  isEditable:true
-              }
-          ]
+          itemList:[]
       }
   },
   methods:{
-      changeStatus:function(){
-          
+      changeStatus:function(item){
+          this.$store.commit("changeStatus",item);
       },
       show:function(itemList){
           return this.$store.state.itemList;
