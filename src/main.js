@@ -25,6 +25,9 @@ const store = new Vuex.Store({
       let result = state.itemList.find(element => element === item);
       result.isFinish = !result.isFinish;
       result.isEditable = !result.isEditable
+    },
+    changeList(state,selectTpye){
+      state.selectTpye = selectTpye;
     }
   }
 })

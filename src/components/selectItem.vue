@@ -16,12 +16,13 @@ export default {
   },
   data(){
       return {
-          
+          selectTpye:null
       }
   },
   methods:{
-      changeList:function(){
-          
+      changeList:function(event){
+          this.selectTpye=event.target.id;
+          this.$store.commit("changeList",this.selectTpye);
       }
   }
 }

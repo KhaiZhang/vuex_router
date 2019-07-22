@@ -27,8 +27,11 @@ export default {
       changeStatus:function(item){
           this.$store.commit("changeStatus",item);
       },
-      show:function(itemList){
-          return this.$store.state.itemList;
+      show:function(list){
+          this.selectTpye = this.$store.state.selectTpye;
+          if(this.selectTpye == 'ALL') return list;
+          else if(this.selectTpye == 'Active') return list.filter(item => !item.isFinish);
+          else return list.filter(item => item.isFinish);
       },
       changeToEdit:function(){
           
