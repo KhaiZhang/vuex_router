@@ -7,15 +7,15 @@
     <input type="text" id="inputNum" name="inputNum" v-model="inputValue">
     <button class="addbtn" @click="addItem()">Add</button>
     <ol class ="list" >
-      <li v-for="(item,index) in itemList" v-bind:key="index" :class="{rackA:index%2==0}" >
-        <input type="checkbox" @click="changeStatus(index)">
+      <li v-for="(item,index) in show(itemList)" v-bind:key="index" :class="{rackA:index%2==0}" >
+        <input type="checkbox" @click="changeStatus(index)" v-bind:checked="item.isFinish">
         <span v-bind:class="{itemIsFinish:item.isFinish}">{{item.content}}</span>
       </li>
     </ol>
     <div class="page_bottom">
-        <span class="select_item">ALL&nbsp;</span>
-        <span class="select_item">Active&nbsp;</span>
-        <span class="select_item">Complete</span>
+        <span class="select_item" id="ALL" @click="changeList">ALL&nbsp;</span>
+        <span class="select_item" id="Active"  @click="changeList">Active&nbsp;</span>
+        <span class="select_item" id="Complete"  @click="changeList">Complete</span>
     </div>
     </div>
   </div>
@@ -30,30 +30,26 @@ export default {
   },
   data() {
     return {
-      itemList:[
-        {
-          isFinish : false,
-          content : "123"
-        },
-        {
-          isFinish : false,
-          content : "xxx"
-        },
-        {
-          isFinish : false,
-          content : "sdad"
-        },
-      ],
-      inputValue:null
+      itemList:[],
+      inputValue:null,
+      selectTpye:'ALL'
     }
   },
   methods :{
-    changeStatus(index){
+    changeStatus:function(index){
         this.itemList[index].isFinish = !this.itemList[index].isFinish;
     },
-    addItem(){
+    addItem:function(){
       this.itemList.push({isFinish:false,content:this.inputValue});
       this.inputValue=null;
+    },
+    changeList:function(evnet){
+      this.selectTpye=event.target.id;
+    },
+    show:function(list){
+      if(this.selectTpye == 'ALL') return list;
+      else if(this.selectTpye == 'Active') return list.filter(item => !item.isFinish);
+      else return list.filter(item => item.isFinish);
     }
   }
 }
