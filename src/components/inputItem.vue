@@ -13,12 +13,18 @@ export default {
   },
   data(){
       return {
-          inputValue:null
+          inputValue: null
       }
   },
   methods:{
       addItem:function(){
-          
+          this.$store.commit("addItem",{
+              isFinish: false, 
+              content: this.inputValue, 
+              isEdit: false, 
+              isEditable: true
+              });
+        this.inputValue = null;
       }
   }
 }

@@ -28,42 +28,42 @@ export default {
   },
   data() {
     return {
-      itemList:[],
-      inputValue:null,
-      selectTpye:'ALL',
-      currentContent:null
+      // itemList:[],
+      // inputValue:null,
+      // selectTpye:'ALL',
+      // currentContent:null
     }
   },
   methods :{
-    changeStatus:function(item){
-        let result = this.itemList.find(element => element === item);
-        result.isFinish = !result.isFinish;
-        item.isEditable = !item.isEditable;
-    },
-    addItem:function(){
-      this.itemList.push({isFinish:false,content:this.inputValue,isEdit:false,isEditable:true});
-      this.inputValue=null;
-    },
-    changeList:function(){
-      this.selectTpye=event.target.id;
-    },
-    show:function(list){
-      if(this.selectTpye == 'ALL') return list;
-      else if(this.selectTpye == 'Active') return list.filter(item => !item.isFinish);
-      else return list.filter(item => item.isFinish);
-    },
-    changeToEdit:function(item){
-      let result = this.itemList.find(element => element === item);
-        if(result.isEditable){
-          result.isEdit =!result.item;
-          this.currentContent = result.content;
-        }    
-    },
-    changeContent:function(item){
-        let result = this.itemList.find(element => element === item);
-        result.content =this.currentContent;
-        result.isEdit = !result.isEdit;   
-    }
+    // changeStatus:function(item){
+    //     let result = this.itemList.find(element => element === item);
+    //     result.isFinish = !result.isFinish;
+    //     item.isEditable = !item.isEditable;
+    // },
+    // addItem:function(){
+    //   this.itemList.push({isFinish:false,content:this.inputValue,isEdit:false,isEditable:true});
+    //   this.inputValue=null;
+    // },
+    // changeList:function(){
+    //   this.selectTpye=event.target.id;
+    // },
+    // show:function(list){
+    //   if(this.selectTpye == 'ALL') return list;
+    //   else if(this.selectTpye == 'Active') return list.filter(item => !item.isFinish);
+    //   else return list.filter(item => item.isFinish);
+    // },
+    // changeToEdit:function(item){
+    //   let result = this.itemList.find(element => element === item);
+    //     if(result.isEditable){
+    //       result.isEdit =!result.item;
+    //       this.currentContent = result.content;
+    //     }    
+    // },
+    // changeContent:function(item){
+    //     let result = this.itemList.find(element => element === item);
+    //     result.content =this.currentContent;
+    //     result.isEdit = !result.isEdit;   
+    // }
   }
 }
 </script>

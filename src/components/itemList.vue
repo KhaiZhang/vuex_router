@@ -1,7 +1,7 @@
 <template>
   <div>
     <ol class ="list" >
-      <li v-for="(item,index) in show(itemList)" v-bind:key="index" :class="{rackA:index%2==0}" >
+      <li v-for="(item,index) in show(this.$store.state.itemList)" v-bind:key="index" :class="{rackA:index%2==0}" >
         <input type="checkbox" @click="changeStatus(item)" v-bind:checked="item.isFinish" >
         <span v-if="!item.isEdit" v-bind:class="{itemIsFinish:item.isFinish}"  v-on:dblclick="changeToEdit(item)" >{{item.content}}</span>
         <input v-else  type="text" v-model="currentContent" v-on:keyup.enter="changeContent(item)">
@@ -19,6 +19,7 @@ export default {
   data(){
       return {
           currentContent:null,
+          selectTpye:'ALL',
           itemList:[
               {
                   isFinish:false,
@@ -45,8 +46,8 @@ export default {
       changeStatus:function(){
           
       },
-      show:function(){
-          return this.itemList;
+      show:function(itemList){
+          return this.$store.state.itemList;
       },
       changeToEdit:function(){
           
