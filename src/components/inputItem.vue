@@ -22,7 +22,8 @@ export default {
               isFinish: false, 
               content: this.inputValue, 
               isEdit: false, 
-              isEditable: true
+              isEditable: true,
+              currentContent: this.inputValue
               });
         this.inputValue = null;
       }
