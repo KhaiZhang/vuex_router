@@ -54,3 +54,7 @@
 .rackA{
     background-color: gainsboro;
 }
+
+.itemIsFinish{
+    text-decoration: line-through;
+}
