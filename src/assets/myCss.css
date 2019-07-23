@@ -5,6 +5,7 @@
     width: 700px;
     border-radius: 20px;
     border:20px solid #ccc;
+    
 }
 
 
@@ -63,5 +64,28 @@
     color: #FF8888;
     margin-left: 20px;
 }
+
+.sub{
+    width: 100px;
+    float: left;
+	height:700px;;
+}
+.main{
+    margin-left: 100px;
+	height:700px;
+}
+
+#content{
+    margin-top: 50px;
+    
+}
+
+#username{
+    margin-left: 1200px;
+    width: 100px;
+}
+
+
+
 
 

@@ -1,8 +1,17 @@
 <template>
   <div>
-    <div>
-        <button>back</button>
-        <span>{{username}}</span>
+    <div id="top_section">
+        <button @click="navigateBack">back</button>
+        <span id="username">{{username}}</span>
+    </div>
+    <div id="content">
+        <div class="sub">
+            <div style="height:50px;background-color:aquamarine;border:1px solid gray;" @click="navigateToTodoList">TodoList列表</div>
+            <div style="height:50px;background-color:aquamarine;border:1px solid gray;" @click="navigateToMine">我的</div>
+        </div>
+        <div class="main">
+            <router-view></router-view>
+        </div>
     </div>
   </div>
 </template>
@@ -13,6 +22,10 @@ export default {
   name: 'welcome',
   props: {
     msg: String,
+  },
+  data(){
+      return {
+      }
   },
   components:{
     
@@ -28,6 +41,18 @@ export default {
     }
   },
   methods :{
+      navigateBack:function(){
+          if(confirm("确认是否退出")){
+            this.$router.go(-1);
+          } 
+      },
+      navigateToTodoList:function(){
+          this.$router.push({name:'ToDoList'})
+      },
+      navigateToMine:function(){
+          let name = this.username;
+          this.$router.push({name:'mine',params:{name}})
+      }
   }
 }
 </script>

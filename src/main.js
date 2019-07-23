@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import welcome from './components/welcome.vue'
 import home from './components/home.vue'
 import ToDoList from './components/ToDoList.vue'
+import mine from './components/mine.vue'
 
 Vue.use(VueRouter)
 
@@ -106,8 +107,15 @@ const router = new VueRouter({
   routes: [
     // 动态路径参数 以冒号开头
     { path: '/', name: 'welcome' , component: welcome },
-    { path: '/ToDoList', name:'ToDoList',component: ToDoList },
-    { path: '/home', name:'home' , component: home }
+    { 
+      path: '/home', 
+      name:'home' , 
+      component: home , 
+      children: [
+      { path: '/ToDoList',name:'ToDoList', component: ToDoList },
+      { path: '/mine',name:'mine', component: mine },
+      ] 
+    }
   ]
 })
 
