@@ -3,6 +3,9 @@ import App from './App.vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import VueRouter from 'vue-router'
+import welcome from './components/welcome.vue'
+import home from './components/home.vue'
+import ToDoList from './components/ToDoList.vue'
 
 Vue.use(VueRouter)
 
@@ -99,9 +102,19 @@ const store = new Vuex.Store({
  
 })
 
+const router = new VueRouter({
+  routes: [
+    // 动态路径参数 以冒号开头
+    { path: '/', name: 'welcome' , component: welcome },
+    { path: '/ToDoList', name:'ToDoList',component: ToDoList },
+    { path: '/home', name:'home' , component: home }
+  ]
+})
+
 Vue.config.productionTip = false
 
 new Vue({
   store,
+  router,
   render: h => h(App),
 }).$mount('#app')
