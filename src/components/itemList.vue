@@ -2,45 +2,37 @@
   <div>
     <ol class ="list" >
       <li v-for="(item,index) in show(this.$store.state.itemList)" v-bind:key="index" :class="{rackA:index%2==0}" >
-        <input type="checkbox" @click="changeStatus(item)" v-bind:checked="item.isFinish" >
-        <span v-if="!item.isEdit" v-bind:class="{itemIsFinish:item.isFinish}"  v-on:dblclick="changeToEdit(item)" >{{item.content}}</span>
-        <input v-else  type="text" v-model="item.currentContent" v-on:keyup.enter="changeContent(item)" >
+        <item :item = item  :index = index></item>
       </li>
     </ol>
   </div>
 </template>
 
 <script>
+import item from './item.vue'
 export default {
   name: 'itemList',
   props: {
     msg: String
   },
+  components:{
+    item
+  },
   data(){
       return {
           currentContent:null,
-          selectTpye:'ALL',
-          itemList:[]
+          selectTpye:null,
+          itemList:null
       }
   },
   methods:{
-      changeStatus:function(item){
-          this.$store.commit("changeStatus",item);
-      },
-      show:function(list){
+      show:function(list){ 
           this.selectTpye = this.$store.state.selectTpye;
           if(this.selectTpye == 'ALL') return list;
-          else if(this.selectTpye == 'Active') return list.filter(item => !item.isFinish);
-          else return list.filter(item => item.isFinish);
-      },
-      changeToEdit:function(item){
-         this.$store.commit("changeToEdit",item);
-         this.currentContent = item.content;
-      },
-      changeContent:function(item){
-        //  this.$store.commit("changeContent",{item : item , currentContent : this.currentContent});
-        this.$store.commit("changeContent",item);
+          else if(this.selectTpye == 'Active') return list.filter(item => !item.completed);
+          else return list.filter(item => item.completed);
       }
+     
   }
 }
 </script>

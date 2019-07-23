@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 
 Vue.use(Vuex)
 
@@ -13,32 +17,20 @@ const store = new Vuex.Store({
   mutations: {
     addItem(state,inputItem){
       state.itemList.push(inputItem);
-      let result = state.itemList.find(element => element === inputItem);
-      console.log('content:'+result.content)
-      console.log('currentContent:'+result.currentContent)
     },
     changeStatus(state,item){
       let result = state.itemList.find(element => element === item);
-      result.isFinish = !result.isFinish;
-      result.isEditable = !result.isEditable
+      result.completed = !result.completed;
     },
     changeList(state,selectTpye){
       state.selectTpye = selectTpye;
     },
-    changeToEdit(state,item){
-      let result = state.itemList.find(element => element === item);
-      if(result.isEditable){
-        result.isEdit =!result.isEdit;
-        result.currentContent = result.content;
-      } 
+    changeContent(state,payload){
+      let result = state.itemList.find(element => element === payload.item);
+      result.content = payload.currentContent;
     },
-    changeContent(state,item){
-      // let result = state.itemList.find(element => element === payload.item);
-      let result = state.itemList.find(element => element === item);
-      console.log('content:'+result.content)
-      console.log('currentContent:'+result.currentContent)
-      result.content = result.currentContent;
-      result.isEdit = !result.isEdit; 
+    getToDoList(state,itemList){
+      state.itemList.push(...itemList);
     }
   }
 })

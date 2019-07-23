@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="page_bottom">
-        <span class="select_item" id="ALL" @click="changeList">ALL&nbsp;</span>
-        <span class="select_item" id="Active"  @click="changeList">Active&nbsp;</span>
-        <span class="select_item" id="Complete"  @click="changeList">Complete</span>
+        <span  style="margin-left:50px" id="ALL" v-bind:class="{select_item : active == 'ALL'}" @click="changeList">ALL&nbsp;</span>
+        <span  style="margin-left:50px" id="Active" v-bind:class="{select_item : active == 'Active'}"  @click="changeList">Active&nbsp;</span>
+        <span  style="margin-left:50px" id="Complete" v-bind:class="{select_item : active == 'Complete'}" @click="changeList">Complete</span>
     </div>
   </div>
 </template>
@@ -16,12 +16,14 @@ export default {
   },
   data(){
       return {
-          selectTpye:null
+          selectTpye:null,
+          active:"ALL"
       }
   },
   methods:{
       changeList:function(event){
-          this.selectTpye=event.target.id;
+          this.selectTpye = event.target.id;
+          this.active = event.target.id;
           this.$store.commit("changeList",this.selectTpye);
       }
   }

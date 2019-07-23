@@ -19,11 +19,8 @@ export default {
   methods:{
       addItem:function(){
           this.$store.commit("addItem",{
-              isFinish: false, 
-              content: this.inputValue, 
-              isEdit: false, 
-              isEditable: true,
-              currentContent: this.inputValue
+              completed: false, 
+              content: this.inputValue
               });
         this.inputValue = null;
       }

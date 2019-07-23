@@ -2,8 +2,7 @@
   <div class="page_container">
   <div class="container">
     <div>
-      <h2>Jquery To Do List</h2>
-      <p class="tips">Simple Todo List with adding and filter by diff status</p>
+      <todoTitle :title = title :subTitle =subTitle  ></todoTitle>
       <inputItem></inputItem>
       <itemList></itemList>
       <selectItem></selectItem>
@@ -16,6 +15,7 @@
 import inputItem from './inputItem.vue'
 import itemList from './itemList.vue'
 import selectItem from './selectItem.vue'
+import todoTitle from './todoTitle.vue'
 export default {
   name: 'ToDoList',
   props: {
@@ -24,7 +24,8 @@ export default {
   components:{
     inputItem,
     itemList,
-    selectItem
+    selectItem,
+    todoTitle
   },
   data() {
     return {
@@ -32,6 +33,8 @@ export default {
       // inputValue:null,
       // selectTpye:'ALL',
       // currentContent:null
+      title: "Jquery To Do List",
+      subTitle: "Simple Todo List with adding and filter by diff status"
     }
   },
   methods :{
