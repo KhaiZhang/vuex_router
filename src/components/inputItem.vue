@@ -18,7 +18,7 @@ export default {
   },
   methods:{
       addItem:function(){
-          this.$store.commit("addItem",{
+          this.$store.dispatch("addItem",{
               completed: false, 
               content: this.inputValue
               });

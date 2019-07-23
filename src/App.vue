@@ -12,6 +12,11 @@ export default {
   name: 'app',
   components: {
     ToDoList
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+    this.$store.dispatch("getItemList");
+    })
   }
 }
 </script>

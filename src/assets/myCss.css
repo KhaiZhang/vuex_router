@@ -59,4 +59,9 @@
     text-decoration: line-through;
 }
 
+#delete{
+    color: #FF8888;
+    margin-left: 20px;
+}
+
 
