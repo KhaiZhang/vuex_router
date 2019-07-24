@@ -2,7 +2,7 @@
   <div>
     <div id="top_section">
         <button @click="navigateBack">back</button>
-        <span id="username">{{username}}</span>
+        <span id="username">{{name}}</span>
     </div>
     <div id="content">
         <div class="sub">
@@ -25,6 +25,7 @@ export default {
   },
   data(){
       return {
+        name : null
       }
   },
   components:{
@@ -35,11 +36,6 @@ export default {
         return this.$route.params.name;
     }
   },
-  data() {
-    return {
-      
-    }
-  },
   methods :{
       navigateBack:function(){
           if(confirm("确认是否退出")){
@@ -47,12 +43,15 @@ export default {
           } 
       },
       navigateToTodoList:function(){
-          this.$router.push({name:'ToDoList'})
+          this.$router.replace({name:'ToDoList',params:{name}})
       },
       navigateToMine:function(){
-          let name = this.username;
-          this.$router.push({name:'mine',params:{name}})
+          let name = this.name;
+          this.$router.replace({name:'mine',params:{name}})
       }
+  },
+  mounted:function(){
+    this.name = this.$route.params.name;
   }
 }
 </script>
